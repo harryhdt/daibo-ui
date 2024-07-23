@@ -9,6 +9,25 @@
   </head>
   <body
     x-data="{
+      show: {
+        button: true,
+        buttonSquare: false,
+        buttonCircle: false,
+        badge: false,
+        inputText: false,
+        textarea: false,
+        inputSelect: false,
+        inputFile: false,
+        inputToggle: false,
+        inputCheckbox: false,
+        inputRadio: false,
+        progress: false,
+        alert: false,
+        dropdown: false,
+      },
+      toggleShow(key) {
+        this.show[key] = !this.show[key];
+      },
       ucFirst(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
       }
@@ -16,331 +35,373 @@
     class="flex flex-col gap-6 p-4"
   >
     <div>
-      <h3 class="mb-4 text-2xl font-semibold">Buttons</h3>
-      <div
-        x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="element in elements">
-          <button class="btn" :class="element" x-text="element"></button>
-        </template>
-      </div>
-      <div
-        x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
-        class="flex flex-wrap items-center gap-2 mt-2"
-      >
-        <template x-for="element in elements">
-          <button class="btn btn-outline" :class="element" x-text="element"></button>
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'btn-xs', 'btn-sm', 'btn-md', 'btn-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements">
-          <button class="btn btn-success" :class="element" x-text="element"></button>
-        </template>
-        <template x-for="element in elements">
-          <button class="btn btn-outline btn-success" :class="element" x-text="element"></button>
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Buttons Square</h3>
-      <div
-        x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="(element, i) in elements">
-          <button class="btn btn-square" :class="element" x-text="i"></button>
-        </template>
-      </div>
-      <div
-        x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
-        class="flex flex-wrap items-start gap-2 mt-2"
-      >
-        <template x-for="(element, i) in elements">
-          <button class="btn btn-outline btn-square" :class="element" x-text="i"></button>
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'btn-xs', 'btn-sm', 'btn-md', 'btn-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements">
-          <button class="btn btn-default btn-square" :class="element">
-            <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
-          </button>
-        </template>
-        <template x-for="element in elements">
-          <button class="btn btn-default btn-outline btn-square" :class="element">
-            <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
-          </button>
-        </template>
-        <template x-for="element in elements">
-          <button class="btn btn-ghost btn-square" :class="element">
-            <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
-          </button>
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Buttons Circle</h3>
-      <div
-        x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="(element, i) in elements">
-          <button class="btn btn-circle" :class="element" x-text="i"></button>
-        </template>
-      </div>
-      <div
-        x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
-        class="flex flex-wrap items-start gap-2 mt-2"
-      >
-        <template x-for="(element, i) in elements">
-          <button class="btn btn-outline btn-circle" :class="element" x-text="i"></button>
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'btn-xs', 'btn-sm', 'btn-md', 'btn-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements">
-          <button class="btn btn-default btn-circle" :class="element">
-            <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
-          </button>
-        </template>
-        <template x-for="element in elements">
-          <button class="btn btn-default btn-outline btn-circle" :class="element">
-            <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
-          </button>
-        </template>
-        <template x-for="element in elements">
-          <button class="btn btn-ghost btn-circle" :class="element">
-            <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
-          </button>
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Badges</h3>
-      <div
-        x-data="{ elements: [ 'badge-default', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-error' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="element in elements">
-          <span class="badge" :class="element" x-text="ucFirst(element.split('-')[1])"></span>
-        </template>
-      </div>
-      <div
-        x-data="{ elements: [ 'badge-default', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-error' ] }"
-        class="flex flex-wrap items-start gap-2 mt-2"
-      >
-        <template x-for="element in elements">
-          <span class="badge badge-outline" :class="element" x-text="ucFirst(element.split('-')[1])"></span>
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'badge-xs', 'badge-sm', 'badge-md', 'badge-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements">
-          <span class="badge badge-primary" :class="element" x-text="ucFirst(element)"></span>
-        </template>
-        <template x-for="element in elements">
-          <span class="badge badge-outline badge-primary" :class="element" x-text="ucFirst(element)"></span>
-        </template>
-      </div>
-      <div class="flex flex-wrap items-start gap-2 mt-2">
-        <button class="btn btn-primary">
-          <span>Notification</span>
-          <span class="badge">99+</span>
-        </button>
-        <button class="btn btn-info">
-          <span>Backup</span>
-          <span class="badge badge-warning">Beta</span>
-        </button>
-        <button class="btn btn-success">
-          <span>Success</span>
-          <span class="badge badge-outline badge-info">Skip</span>
-        </button>
-        <button class="btn btn-error">
-          <span>Delete</span>
-          <span class="badge badge-outline badge-success">8</span>
-        </button>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Input Text</h3>
-      <div
-        x-data="{ elements: [ 'input-default', 'input-primary', 'input-secondary', 'input-accent', 'input-info', 'input-success', 'input-warning', 'input-error' ] }"
-        class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-      >
-        <template x-for="element in elements" :key="element">
-          <input class="input" :class="element" :placeholder="ucFirst(element.split('-')[1])" />
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'input-xs', 'input-sm', 'input-md', 'input-lg' ] }" class="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <template x-for="element in elements" :key="element">
-          <input class="input input-default" :class="element" :placeholder="ucFirst(element)" />
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Textarea</h3>
-      <div
-        x-data="{ elements: [ 'textarea-default', 'textarea-primary', 'textarea-secondary', 'textarea-accent', 'textarea-info', 'textarea-success', 'textarea-warning', 'textarea-error' ] }"
-        class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-      >
-        <template x-for="element in elements" :key="element">
-          <textarea class="textarea" :class="element" :placeholder="ucFirst(element.split('-')[1])"></textarea>
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'textarea-xs', 'textarea-sm', 'textarea-md', 'textarea-lg' ] }" class="grid items-start grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <template x-for="(element, i) in elements" :key="element">
-          <textarea class="textarea textarea-default" :class="element" :rows="i+1" :placeholder="ucFirst(element)"></textarea>
-        </template>
-      </div>
-    </div>
-    <div x-data="{ options: ['Option 1', 'Option 2', 'Option 3'] }">
-      <h3 class="mb-4 text-2xl font-semibold">Input Select</h3>
-      <div
-        x-data="{ elements: [ 'select-default', 'select-primary', 'select-secondary', 'select-accent', 'select-info', 'select-success', 'select-warning', 'select-error' ] }"
-        class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-      >
-        <template x-for="element in elements" :key="element">
-          <select class="select" :class="element">
-            <option disabled selected>Default</option>
-            <template x-for="option in options" :key="option">
-              <option x-text="option"></option>
-            </template>
-          </select>
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'select-xs', 'select-sm', 'select-md', 'select-lg' ] }" class="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <template x-for="element in elements" :key="element">
-          <select class="select select-default" :class="element" placeholder="Select...">
-            <option disabled selected>Default</option>
-            <template x-for="option in options" :key="option">
-              <option x-text="option"></option>
-            </template>
-          </select>
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Input File</h3>
-      <div
-        x-data="{ elements: [ 'file-input-default', 'file-input-primary', 'file-input-secondary', 'file-input-accent', 'file-input-info', 'file-input-success', 'file-input-warning', 'file-input-error' ] }"
-        class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-      >
-        <template x-for="element in elements" :key="element">
-          <input type="file" class="file-input" :class="element" />
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'file-input-xs', 'file-input-sm', 'file-input-md', 'file-input-lg' ] }" class="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <template x-for="element in elements" :key="element">
-          <input type="file" class="file-input file-input-default" :class="element" />
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Input Toggle</h3>
-      <div
-        x-data="{ elements: [ 'toggle-default', 'toggle-primary', 'toggle-secondary', 'toggle-accent', 'toggle-info', 'toggle-success', 'toggle-warning', 'toggle-error' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="element in elements" :key="element">
-          <input type="checkbox" class="toggle" checked :class="element" />
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'toggle-xs', 'toggle-sm', 'toggle-md', 'toggle-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements" :key="element">
-          <input type="checkbox" class="toggle toggle-default" checked :class="element" />
-        </template>
-      </div>
-      <div class="flex flex-wrap items-start gap-2 mt-2">
-        <label class="label" x-data="{ checked: false }">
-          <input type="checkbox" x-model="checked" class="toggle toggle-success" />
-          <span class="ml-2 label-text" x-text="checked ? 'Checked' : 'Unchecked'"></span>
-        </label>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Input Checkbox</h3>
-      <div
-        x-data="{ elements: [ 'checkbox-default', 'checkbox-primary', 'checkbox-secondary', 'checkbox-accent', 'checkbox-info', 'checkbox-success', 'checkbox-warning', 'checkbox-error' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="element in elements" :key="element">
-          <input type="checkbox" class="checkbox" checked :class="element" />
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'checkbox-xs', 'checkbox-sm', 'checkbox-md', 'checkbox-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements" :key="element">
-          <input type="checkbox" class="checkbox checkbox-default" checked :class="element" />
-        </template>
-      </div>
-      <div class="flex flex-wrap items-start gap-2 mt-2">
-        <label class="label" x-data="{ checked: false }">
-          <input type="checkbox" x-model="checked" class="checkbox checkbox-success" />
-          <span class="ml-2 label-text" x-text="checked ? 'Checked' : 'Unchecked'"></span>
-        </label>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Input Radio</h3>
-      <div
-        x-data="{ elements: [ 'radio-default', 'radio-primary', 'radio-secondary', 'radio-accent', 'radio-info', 'radio-success', 'radio-warning', 'radio-error' ] }"
-        class="flex flex-wrap items-center gap-2"
-      >
-        <template x-for="element in elements" :key="element">
-          <input type="radio" class="radio" checked :class="element" />
-        </template>
-      </div>
-      <div x-data="{ elements: [ 'radio-xs', 'radio-sm', 'radio-md', 'radio-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
-        <template x-for="element in elements" :key="element">
-          <input type="radio" class="radio radio-default" checked :class="element" />
-        </template>
-      </div>
-      <div class="flex flex-wrap items-start gap-2 mt-2">
-        <label class="label">
-          <input type="radio" name="example" checked class="radio radio-success" />
-          <span class="ml-2 label-text" name="example">Option 1</span>
-        </label>
-        <label class="label">
-          <input type="radio" name="example" class="radio radio-success" />
-          <span class="ml-2 label-text" name="example">Option 2</span>
-        </label>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Progress</h3>
-      <div
-        x-data="{ elements: [ 'progress-default', 'progress-primary', 'progress-secondary', 'progress-accent', 'progress-info', 'progress-success', 'progress-warning', 'progress-error' ] }"
-        class="flex flex-wrap items-center w-full max-w-xs gap-2"
-      >
-        <template x-for="element in elements" :key="element">
-          <progress class="progress" :class="element" :value="Math.floor(Math.random() * 101)" max="100"></progress>
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Alert</h3>
-      <div x-data="{ elements: [ 'alert-default', 'alert-info', 'alert-success', 'alert-warning', 'alert-error' ] }" class="flex flex-col w-full max-w-xs gap-2">
-        <template x-for="element in elements" :key="element">
-          <div class="alert" :class="element">
-            <div class="[&>svg]:size-4" x-lucide="'CheckCircle'"></div>
-            <span x-text="ucFirst(element.split('-')[1]) + ' alert message here ...'"></span>
-          </div>
-        </template>
-      </div>
-    </div>
-    <div>
-      <h3 class="mb-4 text-2xl font-semibold">Dropdown</h3>
-      <div>
-        <div class="dropdown dropdown-right dropdown-open">
-          <div tabindex="0" role="button" class="m-1 btn btn-default btn-square">
-            <div class="flex items-center justify-center size-5" x-lucide="'EllipsisVertical'"></div>
-          </div>
-          <ul tabindex="0" class="dropdown-content menu z-[1] w-52">
-            <li><a class="active">Item 1</a></li>
-            <li><a>Item 2</a></li>
-            <li><a>Item 3</a></li>
-            <hr />
-            <li><a class="error">Delete</a></li>
-          </ul>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('button')">Buttons</h3>
+      <div x-cloak x-show="show.button">
+        <div
+          x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="element in elements">
+            <button class="btn" :class="element" x-text="element"></button>
+          </template>
+        </div>
+        <div
+          x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
+          class="flex flex-wrap items-center gap-2 mt-2"
+        >
+          <template x-for="element in elements">
+            <button class="btn btn-outline" :class="element" x-text="element"></button>
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'btn-xs', 'btn-sm', 'btn-md', 'btn-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements">
+            <button class="btn btn-success" :class="element" x-text="element"></button>
+          </template>
+          <template x-for="element in elements">
+            <button class="btn btn-outline btn-success" :class="element" x-text="element"></button>
+          </template>
         </div>
       </div>
+      <div x-show="!show.button" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('buttonSquare')">Buttons Square</h3>
+      <div x-cloak x-show="show.buttonSquare">
+        <div
+          x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="(element, i) in elements">
+            <button class="btn btn-square" :class="element" x-text="i"></button>
+          </template>
+        </div>
+        <div
+          x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
+          class="flex flex-wrap items-start gap-2 mt-2"
+        >
+          <template x-for="(element, i) in elements">
+            <button class="btn btn-outline btn-square" :class="element" x-text="i"></button>
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'btn-xs', 'btn-sm', 'btn-md', 'btn-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements">
+            <button class="btn btn-default btn-square" :class="element">
+              <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
+            </button>
+          </template>
+          <template x-for="element in elements">
+            <button class="btn btn-default btn-outline btn-square" :class="element">
+              <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
+            </button>
+          </template>
+          <template x-for="element in elements">
+            <button class="btn btn-ghost btn-square" :class="element">
+              <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
+            </button>
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.buttonSquare" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Buttons Circle</h3>
+      <div x-cloak x-show="show.buttonCircle">
+        <div
+          x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="(element, i) in elements">
+            <button class="btn btn-circle" :class="element" x-text="i"></button>
+          </template>
+        </div>
+        <div
+          x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
+          class="flex flex-wrap items-start gap-2 mt-2"
+        >
+          <template x-for="(element, i) in elements">
+            <button class="btn btn-outline btn-circle" :class="element" x-text="i"></button>
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'btn-xs', 'btn-sm', 'btn-md', 'btn-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements">
+            <button class="btn btn-default btn-circle" :class="element">
+              <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
+            </button>
+          </template>
+          <template x-for="element in elements">
+            <button class="btn btn-default btn-outline btn-circle" :class="element">
+              <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
+            </button>
+          </template>
+          <template x-for="element in elements">
+            <button class="btn btn-ghost btn-circle" :class="element">
+              <div class="flex items-center justify-center" :class="element === 'btn-lg' ? 'size-6' : 'size-4'" x-lucide="'EllipsisVertical'"></div>
+            </button>
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.buttonCircle" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Badges</h3>
+      <div x-cloak x-show="show.badge">
+        <div
+          x-data="{ elements: [ 'badge-default', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-error' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="element in elements">
+            <span class="badge" :class="element" x-text="ucFirst(element.split('-')[1])"></span>
+          </template>
+        </div>
+        <div
+          x-data="{ elements: [ 'badge-default', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-error' ] }"
+          class="flex flex-wrap items-start gap-2 mt-2"
+        >
+          <template x-for="element in elements">
+            <span class="badge badge-outline" :class="element" x-text="ucFirst(element.split('-')[1])"></span>
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'badge-xs', 'badge-sm', 'badge-md', 'badge-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements">
+            <span class="badge badge-primary" :class="element" x-text="ucFirst(element)"></span>
+          </template>
+          <template x-for="element in elements">
+            <span class="badge badge-outline badge-primary" :class="element" x-text="ucFirst(element)"></span>
+          </template>
+        </div>
+        <div class="flex flex-wrap items-start gap-2 mt-2">
+          <button class="btn btn-primary">
+            <span>Notification</span>
+            <span class="badge">99+</span>
+          </button>
+          <button class="btn btn-info">
+            <span>Backup</span>
+            <span class="badge badge-warning">Beta</span>
+          </button>
+          <button class="btn btn-success">
+            <span>Success</span>
+            <span class="badge badge-outline badge-info">Skip</span>
+          </button>
+          <button class="btn btn-error">
+            <span>Delete</span>
+            <span class="badge badge-outline badge-success">8</span>
+          </button>
+        </div>
+      </div>
+      <div x-show="!show.badge" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Text</h3>
+      <div x-cloak x-show="show.inputText">
+        <div
+          x-data="{ elements: [ 'input-default', 'input-primary', 'input-secondary', 'input-accent', 'input-info', 'input-success', 'input-warning', 'input-error' ] }"
+          class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <template x-for="element in elements" :key="element">
+            <input class="input" :class="element" :placeholder="ucFirst(element.split('-')[1])" />
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'input-xs', 'input-sm', 'input-md', 'input-lg' ] }" class="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <template x-for="element in elements" :key="element">
+            <input class="input input-default" :class="element" :placeholder="ucFirst(element)" />
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.inputText" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Textarea</h3>
+      <div x-cloak x-show="show.textarea">
+        <div
+          x-data="{ elements: [ 'textarea-default', 'textarea-primary', 'textarea-secondary', 'textarea-accent', 'textarea-info', 'textarea-success', 'textarea-warning', 'textarea-error' ] }"
+          class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <template x-for="element in elements" :key="element">
+            <textarea class="textarea" :class="element" :placeholder="ucFirst(element.split('-')[1])"></textarea>
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'textarea-xs', 'textarea-sm', 'textarea-md', 'textarea-lg' ] }" class="grid items-start grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <template x-for="(element, i) in elements" :key="element">
+            <textarea class="textarea textarea-default" :class="element" :rows="i+1" :placeholder="ucFirst(element)"></textarea>
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.textarea" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Select</h3>
+      <div x-cloak x-show="show.inputSelect" x-data="{ options: ['Option 1', 'Option 2', 'Option 3'] }">
+        <div
+          x-data="{ elements: [ 'select-default', 'select-primary', 'select-secondary', 'select-accent', 'select-info', 'select-success', 'select-warning', 'select-error' ] }"
+          class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <template x-for="element in elements" :key="element">
+            <select class="select" :class="element">
+              <option disabled selected>Default</option>
+              <template x-for="option in options" :key="option">
+                <option x-text="option"></option>
+              </template>
+            </select>
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'select-xs', 'select-sm', 'select-md', 'select-lg' ] }" class="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <template x-for="element in elements" :key="element">
+            <select class="select select-default" :class="element" placeholder="Select...">
+              <option disabled selected>Default</option>
+              <template x-for="option in options" :key="option">
+                <option x-text="option"></option>
+              </template>
+            </select>
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.button" class="italic text-base-content/50">', 'Option show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input File</h3>
+      <div x-cloak x-show="show.inputFile">
+        <div
+          x-data="{ elements: [ 'file-input-default', 'file-input-primary', 'file-input-secondary', 'file-input-accent', 'file-input-info', 'file-input-success', 'file-input-warning', 'file-input-error' ] }"
+          class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <template x-for="element in elements" :key="element">
+            <input type="file" class="file-input" :class="element" />
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'file-input-xs', 'file-input-sm', 'file-input-md', 'file-input-lg' ] }" class="grid grid-cols-1 gap-2 mt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <template x-for="element in elements" :key="element">
+            <input type="file" class="file-input file-input-default" :class="element" />
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.inputFile" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Toggle</h3>
+      <div x-cloak x-show="show.inputToggle">
+        <div
+          x-data="{ elements: [ 'toggle-default', 'toggle-primary', 'toggle-secondary', 'toggle-accent', 'toggle-info', 'toggle-success', 'toggle-warning', 'toggle-error' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="element in elements" :key="element">
+            <input type="checkbox" class="toggle" checked :class="element" />
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'toggle-xs', 'toggle-sm', 'toggle-md', 'toggle-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements" :key="element">
+            <input type="checkbox" class="toggle toggle-default" checked :class="element" />
+          </template>
+        </div>
+        <div class="flex flex-wrap items-start gap-2 mt-2">
+          <label class="label" x-data="{ checked: false }">
+            <input type="checkbox" x-model="checked" class="toggle toggle-success" />
+            <span class="ml-2 label-text" x-text="checked ? 'Checked' : 'Unchecked'"></span>
+          </label>
+        </div>
+      </div>
+      <div x-show="!show.inputToggle" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Checkbox</h3>
+      <div x-cloak x-show="show.inputCheckbox">
+        <div
+          x-data="{ elements: [ 'checkbox-default', 'checkbox-primary', 'checkbox-secondary', 'checkbox-accent', 'checkbox-info', 'checkbox-success', 'checkbox-warning', 'checkbox-error' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="element in elements" :key="element">
+            <input type="checkbox" class="checkbox" checked :class="element" />
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'checkbox-xs', 'checkbox-sm', 'checkbox-md', 'checkbox-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements" :key="element">
+            <input type="checkbox" class="checkbox checkbox-default" checked :class="element" />
+          </template>
+        </div>
+        <div class="flex flex-wrap items-start gap-2 mt-2">
+          <label class="label" x-data="{ checked: false }">
+            <input type="checkbox" x-model="checked" class="checkbox checkbox-success" />
+            <span class="ml-2 label-text" x-text="checked ? 'Checked' : 'Unchecked'"></span>
+          </label>
+        </div>
+      </div>
+      <div x-show="!show.inputCheckbox" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Radio</h3>
+      <div x-cloak x-show="show.inputRadio">
+        <div
+          x-data="{ elements: [ 'radio-default', 'radio-primary', 'radio-secondary', 'radio-accent', 'radio-info', 'radio-success', 'radio-warning', 'radio-error' ] }"
+          class="flex flex-wrap items-center gap-2"
+        >
+          <template x-for="element in elements" :key="element">
+            <input type="radio" class="radio" checked :class="element" />
+          </template>
+        </div>
+        <div x-data="{ elements: [ 'radio-xs', 'radio-sm', 'radio-md', 'radio-lg' ] }" class="flex flex-wrap items-start gap-2 mt-2">
+          <template x-for="element in elements" :key="element">
+            <input type="radio" class="radio radio-default" checked :class="element" />
+          </template>
+        </div>
+        <div class="flex flex-wrap items-start gap-2 mt-2">
+          <label class="label">
+            <input type="radio" name="example" checked class="radio radio-success" />
+            <span class="ml-2 label-text" name="example">Option 1</span>
+          </label>
+          <label class="label">
+            <input type="radio" name="example" class="radio radio-success" />
+            <span class="ml-2 label-text" name="example">Option 2</span>
+          </label>
+        </div>
+      </div>
+      <div x-show="!show.inputRadio" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Progress</h3>
+      <div x-cloak x-show="show.progress">
+        <div
+          x-data="{ elements: [ 'progress-default', 'progress-primary', 'progress-secondary', 'progress-accent', 'progress-info', 'progress-success', 'progress-warning', 'progress-error' ] }"
+          class="flex flex-wrap items-center w-full max-w-xs gap-2"
+        >
+          <template x-for="element in elements" :key="element">
+            <progress class="progress" :class="element" :value="Math.floor(Math.random() * 101)" max="100"></progress>
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.progress" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Alert</h3>
+      <div x-cloak x-show="show.alert">
+        <div x-data="{ elements: [ 'alert-default', 'alert-info', 'alert-success', 'alert-warning', 'alert-error' ] }" class="flex flex-col w-full max-w-xs gap-2">
+          <template x-for="element in elements" :key="element">
+            <div class="alert" :class="element">
+              <div class="[&>svg]:size-4" x-lucide="'CheckCircle'"></div>
+              <span x-text="ucFirst(element.split('-')[1]) + ' alert message here ...'"></span>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div x-show="!show.alert" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Dropdown</h3>
+      <div x-cloak x-show="show.dropdown">
+        <div>
+          <div class="dropdown dropdown-right dropdown-open">
+            <div tabindex="0" role="button" class="m-1 btn btn-default btn-square">
+              <div class="flex items-center justify-center size-5" x-lucide="'EllipsisVertical'"></div>
+            </div>
+            <ul tabindex="0" class="dropdown-content menu z-[1] w-52">
+              <li><a class="active">Item 1</a></li>
+              <li><a>Item 2</a></li>
+              <li><a>Item 3</a></li>
+              <hr />
+              <li><a class="error">Delete</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div x-show="!show.dropdown" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div class="mt-96"></div>
     <script src="https://unpkg.com/lucide@latest"></script>
