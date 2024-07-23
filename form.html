@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="daibo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form - Daibo UI</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body class="gap-6 p-4">
+    <form action="#" class="flex flex-col max-w-md gap-2 mx-auto">
+      <div class="flex items-center justify-between -mb-1">
+        <h3 class="text-2xl font-semibold">Form</h3>
+        <button type="button" class="btn btn-success">
+          <span>New</span>
+          <div x-data x-lucide="'Plus'" class="[&>svg]:size-4"></div>
+        </button>
+      </div>
+      <div class="flex flex-col">
+        <label for="name" class="label"> <p class="label-text">Name</p></label>
+        <input type="text" id="name" class="input input-default" placeholder="Your name..." />
+      </div>
+      <div class="flex flex-col">
+        <label for="email" class="label"> <p class="label-text">Email</p></label>
+        <input type="email" id="email" class="input input-default" placeholder="Your email..." />
+      </div>
+      <div class="flex flex-col">
+        <label for="message" class="label"> <p class="label-text">Message</p></label>
+        <textarea id="message" class="textarea textarea-default" placeholder="Your message..."></textarea>
+      </div>
+      <div class="flex justify-end gap-2 pt-3">
+        <button type="button" class="btn btn-ghost">Cancel</button>
+        <button type="reset" class="btn btn-error">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    <div class="mt-96"></div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

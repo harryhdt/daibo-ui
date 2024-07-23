@@ -1,0 +1,6 @@
+node_modules
+daisyui.js
+package.json
+package-lock.json
+tailwind.config.js
+tw.css
