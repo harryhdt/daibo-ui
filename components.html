@@ -62,7 +62,7 @@
           </template>
         </div>
       </div>
-      <div x-show="!show.button" class="italic text-base-content/50">Click title to show</div>
+      <div x-cloak x-show="!show.button" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
       <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('buttonSquare')">Buttons Square</h3>
@@ -104,7 +104,7 @@
       <div x-show="!show.buttonSquare" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Buttons Circle</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('buttonCircle')">Buttons Circle</h3>
       <div x-cloak x-show="show.buttonCircle">
         <div
           x-data="{ elements: [ 'btn-default', 'btn-primary', 'btn-secondary', 'btn-accent', 'btn-info', 'btn-success', 'btn-warning', 'btn-error', 'btn-link', 'btn-ghost', 'btn-outline', 'btn-disabled' ] }"
@@ -143,7 +143,7 @@
       <div x-show="!show.buttonCircle" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Badges</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('badge')">Badges</h3>
       <div x-cloak x-show="show.badge">
         <div
           x-data="{ elements: [ 'badge-default', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-error' ] }"
@@ -191,7 +191,7 @@
       <div x-show="!show.badge" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Text</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('inputText')">Input Text</h3>
       <div x-cloak x-show="show.inputText">
         <div
           x-data="{ elements: [ 'input-default', 'input-primary', 'input-secondary', 'input-accent', 'input-info', 'input-success', 'input-warning', 'input-error' ] }"
@@ -210,7 +210,7 @@
       <div x-show="!show.inputText" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Textarea</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('textarea')">Textarea</h3>
       <div x-cloak x-show="show.textarea">
         <div
           x-data="{ elements: [ 'textarea-default', 'textarea-primary', 'textarea-secondary', 'textarea-accent', 'textarea-info', 'textarea-success', 'textarea-warning', 'textarea-error' ] }"
@@ -229,7 +229,7 @@
       <div x-show="!show.textarea" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Select</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('inputSelect')">Input Select</h3>
       <div x-cloak x-show="show.inputSelect" x-data="{ options: ['Option 1', 'Option 2', 'Option 3'] }">
         <div
           x-data="{ elements: [ 'select-default', 'select-primary', 'select-secondary', 'select-accent', 'select-info', 'select-success', 'select-warning', 'select-error' ] }"
@@ -255,10 +255,10 @@
           </template>
         </div>
       </div>
-      <div x-show="!show.button" class="italic text-base-content/50">', 'Option show</div>
+      <div x-show="!show.inputSelect" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input File</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('inputFile')">Input File</h3>
       <div x-cloak x-show="show.inputFile">
         <div
           x-data="{ elements: [ 'file-input-default', 'file-input-primary', 'file-input-secondary', 'file-input-accent', 'file-input-info', 'file-input-success', 'file-input-warning', 'file-input-error' ] }"
@@ -277,7 +277,7 @@
       <div x-show="!show.inputFile" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Toggle</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('inputToggle')">Input Toggle</h3>
       <div x-cloak x-show="show.inputToggle">
         <div
           x-data="{ elements: [ 'toggle-default', 'toggle-primary', 'toggle-secondary', 'toggle-accent', 'toggle-info', 'toggle-success', 'toggle-warning', 'toggle-error' ] }"
@@ -302,7 +302,7 @@
       <div x-show="!show.inputToggle" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Checkbox</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('inputCheckbox')">Input Checkbox</h3>
       <div x-cloak x-show="show.inputCheckbox">
         <div
           x-data="{ elements: [ 'checkbox-default', 'checkbox-primary', 'checkbox-secondary', 'checkbox-accent', 'checkbox-info', 'checkbox-success', 'checkbox-warning', 'checkbox-error' ] }"
@@ -327,7 +327,7 @@
       <div x-show="!show.inputCheckbox" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Input Radio</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('inputRadio')">Input Radio</h3>
       <div x-cloak x-show="show.inputRadio">
         <div
           x-data="{ elements: [ 'radio-default', 'radio-primary', 'radio-secondary', 'radio-accent', 'radio-info', 'radio-success', 'radio-warning', 'radio-error' ] }"
@@ -356,7 +356,7 @@
       <div x-show="!show.inputRadio" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Progress</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('progress')">Progress</h3>
       <div x-cloak x-show="show.progress">
         <div
           x-data="{ elements: [ 'progress-default', 'progress-primary', 'progress-secondary', 'progress-accent', 'progress-info', 'progress-success', 'progress-warning', 'progress-error' ] }"
@@ -370,7 +370,7 @@
       <div x-show="!show.progress" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Alert</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('alert')">Alert</h3>
       <div x-cloak x-show="show.alert">
         <div x-data="{ elements: [ 'alert-default', 'alert-info', 'alert-success', 'alert-warning', 'alert-error' ] }" class="flex flex-col w-full max-w-xs gap-2">
           <template x-for="element in elements" :key="element">
@@ -384,7 +384,7 @@
       <div x-show="!show.alert" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline">Dropdown</h3>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('dropdown')">Dropdown</h3>
       <div x-cloak x-show="show.dropdown">
         <div>
           <div class="dropdown dropdown-right dropdown-open">
