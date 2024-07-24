@@ -492,6 +492,66 @@ export default {
       "background-color": "color-mix( in oklab, oklch(var(--er, var(--b2)) / var(--tw-bg-opacity, 1)) 85%, black )",
       "background-image": "linear-gradient(to bottom,oklch(var(--er)) 0,color-mix( in oklab, oklch(var(--er, var(--b2)) / var(--tw-bg-opacity, 1)) 85%, black ) 100%)",
     },
+    ".panel": {
+      "background-color": "oklch(var(--b1))",
+      border: "1px solid oklch(var(--panel-color, var(--b2)))",
+      "border-radius": "5px",
+      "box-shadow": "0 1px 2px oklch(var(--b3)/0.25)",
+    },
+    ".panel-title": {
+      "border-radius": "2.5px 2.5px 0 0",
+      color: "oklch(var(--panel-color-text))",
+      "text-shadow": "0 -1px 0 rgba(0,0,0,.2)",
+      "background-color": "color-mix( in oklab, oklch(var(--panel-color, var(--b2)) / var(--tw-bg-opacity, 1)) 85%, black )",
+      "background-image": "linear-gradient(to bottom,oklch(var(--panel-color)) 0,color-mix( in oklab, oklch(var(--panel-color, var(--b2)) / var(--tw-bg-opacity, 1)) 85%, black ) 100%)",
+      "box-shadow": "inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075)",
+      "border-bottom": "1px solid oklch(var(--panel-color, var(--b2)) / var(--tw-bg-opacity, 1))",
+      padding: "0.5rem 1rem",
+    },
+    ".panel-default .panel-title": {
+      color: "colormix( in oklab, oklch(var(--bc) / var(--tw-text-opacity, 1)) 80%, black )",
+      "text-shadow": "0 1px 0 oklch(var(--b1))",
+      "background-image":
+        "linear-gradient(to bottom,color-mix( in oklab, oklch(var(--panel-color,var(--b1)) / var(--tw-bg-opacity, 1)) 98%, black ) 0,color-mix( in oklab, oklch(var(--panel-color,var(--b1)) / var(--tw-bg-opacity, 1)) 95%, black ) 100%)",
+    },
+    ".panel-body": {
+      padding: "0.75rem 1rem",
+    },
+    ".panel-default-border": {
+      border: "1px solid oklch(var(--b2))",
+      "border-top": "1px solid oklch(var(--panel-color, var(--b2)))",
+    },
+    ".panel-default-border .panel-title": {
+      margin: "0 -1px 0 -1px",
+    },
+    ".panel-primary": {
+      "--panel-color": "var(--p)",
+      "--panel-color-text": "var(--pc)",
+    },
+    ".panel-secondary": {
+      "--panel-color": "var(--s)",
+      "--panel-color-text": "var(--sc)",
+    },
+    ".panel-accent": {
+      "--panel-color": "var(--a)",
+      "--panel-color-text": "var(--ac)",
+    },
+    ".panel-info": {
+      "--panel-color": "var(--in)",
+      "--panel-color-text": "var(--inc)",
+    },
+    ".panel-success": {
+      "--panel-color": "var(--su)",
+      "--panel-color-text": "var(--suc)",
+    },
+    ".panel-warning": {
+      "--panel-color": "var(--wa)",
+      "--panel-color-text": "var(--wac)",
+    },
+    ".panel-error": {
+      "--panel-color": "var(--er)",
+      "--panel-color-text": "var(--erc)",
+    },
   },
   daiboDark: {
     ...themes["daibo"],

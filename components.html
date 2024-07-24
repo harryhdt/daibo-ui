@@ -24,6 +24,7 @@
         progress: false,
         alert: false,
         dropdown: false,
+        panel: false
       },
       toggleShow(key) {
         this.show[key] = !this.show[key];
@@ -402,6 +403,27 @@
         </div>
       </div>
       <div x-show="!show.dropdown" class="italic text-base-content/50">Click title to show</div>
+    </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('panel')">Panel</h3>
+      <div x-cloak x-show="show.panel">
+        <div
+          x-data="{ elements: [ 'panel-default', 'panel-primary', 'panel-secondary', 'panel-accent', 'panel-info', 'panel-success', 'panel-warning', 'panel-error' ] }"
+          class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          <template x-for="element in elements" :key="element">
+            <div class="panel" :class="element">
+              <div class="panel-title" x-text="ucFirst(element.replace('-', ' '))"></div>
+              <div class="panel-body">Panel Content</div>
+            </div>
+          </template>
+          <div class="panel panel-primary panel-default-border">
+            <div class="panel-title">Panel Primary 2</div>
+            <div class="panel-body">Panel Content</div>
+          </div>
+        </div>
+      </div>
+      <div x-show="!show.panel" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div class="mt-96"></div>
     <script src="https://unpkg.com/lucide@latest"></script>
