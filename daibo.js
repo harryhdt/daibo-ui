@@ -382,42 +382,6 @@ export default {
       "--badge-color": "var(--er)",
       "--badge-text-color": "var(--erc)",
     },
-    ".progress": {
-      height: "1rem",
-    },
-    ".progress:not(.progress-zebra)::-moz-progress-bar, .progress:not(.progress-zebra)[value]::-webkit-progress-value": {
-      "background-image": "linear-gradient(to bottom,oklch(var(--progress-color)) 0,color-mix( in oklab, oklch(var(--progress-color, var(--b2)) / var(--tw-bg-opacity, 1)) 85%, black ) 100%)",
-      "box-shadow": "inset 0 -1px 0 rgba(0,0,0,.15)",
-      "border-radius": "0",
-    },
-    ".progress-primary": {
-      "--progress-color": "var(--p)",
-    },
-    ".progress-secondary": {
-      "--progress-color": "var(--s)",
-    },
-    ".progress-accent": {
-      "--progress-color": "var(--a)",
-    },
-    ".progress-info": {
-      "--progress-color": "var(--in)",
-    },
-    ".progress-success": {
-      "--progress-color": "var(--su)",
-    },
-    ".progress-warning": {
-      "--progress-color": "var(--wa)",
-    },
-    ".progress-error": {
-      "--progress-color": "var(--er)",
-    },
-    ".progress-zebra::-moz-progress-bar, .progress-zebra[value]::-webkit-progress-value": {
-      "background-image": "linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)",
-      "background-repeat": "repeat-x",
-      "box-shadow": "inset 0 -1px 0 rgba(0,0,0,.15)",
-      "border-radius": "0",
-      "background-size": "2.5rem 2.5rem",
-    },
     ".alert": {
       "--alert-bg": "var(--fallback-in,oklch(var(--b2)))",
       "--alert-border-color": "var(--fallback-in,oklch(var(--b3)))",

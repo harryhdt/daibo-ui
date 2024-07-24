@@ -357,20 +357,6 @@
       <div x-show="!show.inputRadio" class="italic text-base-content/50">Click title to show</div>
     </div>
     <div>
-      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('progress')">Progress</h3>
-      <div x-cloak x-show="show.progress">
-        <div
-          x-data="{ elements: [ 'progress-default', 'progress-primary', 'progress-secondary', 'progress-accent', 'progress-info', 'progress-success', 'progress-warning', 'progress-error', 'progress-primary progress-zebra' ] }"
-          class="flex flex-wrap items-center w-full max-w-xs gap-2"
-        >
-          <template x-for="element in elements" :key="element">
-            <progress class="progress" :class="element" :value="Math.floor(Math.random() * 101)" max="100"></progress>
-          </template>
-        </div>
-      </div>
-      <div x-show="!show.progress" class="italic text-base-content/50">Click title to show</div>
-    </div>
-    <div>
       <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('alert')">Alert</h3>
       <div x-cloak x-show="show.alert">
         <div x-data="{ elements: [ 'alert-default', 'alert-info', 'alert-success', 'alert-warning', 'alert-error' ] }" class="flex flex-col w-full max-w-xs gap-2">
