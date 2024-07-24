@@ -425,6 +425,61 @@
       </div>
       <div x-show="!show.panel" class="italic text-base-content/50">Click title to show</div>
     </div>
+    <div>
+      <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('table')">Table</h3>
+      <div
+        x-cloak
+        x-show="show.table"
+        class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 [&>div]:max-h-[180px] [&>div]:overflow-auto"
+        x-data="{
+          elements: ['table-default', 'table-bordered', 'table-zebra', 'table-xs', 'table-pin-rows', 'table-hover-rows', 'table-zebra table-pin-rows table-hover-rows'],
+          data: {
+            headings: ['','Name', 'Job', 'Favorite Color'],
+            rows: [
+              ['Cedric Kelly', 'Quality Control Specialist', 'Blue'],
+              ['Hart Hagerty', 'Desktop Support Technician', 'Purple'],
+              ['Brice Swyre', 'Tax Accountant', 'Red']
+            ]
+          }
+      }"
+      >
+        <template x-for="element in elements" :key="element">
+          <div class="overflow-x-auto shadow bg-base-100">
+            <table class="table" :class="element">
+              <!-- head -->
+              <thead>
+                <tr>
+                  <template x-for="heading in data.headings" :key="heading">
+                    <th x-text="heading"></th>
+                  </template>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="(row, index) in data.rows" :key="row">
+                  <tr>
+                    <th x-text="index + 1" class="w-12 text-center"></th>
+                    <td x-text="row[0]"></td>
+                    <td x-text="row[1]"></td>
+                    <td x-text="row[2]"></td>
+                  </tr>
+                </template>
+                <template x-if="element === 'table-pin-rows' || element === 'table-zebra table-pin-rows table-hover-rows'">
+                  <template x-for="(row, index) in Array(30)">
+                    <tr>
+                      <th x-text="index + 3" class="w-12 text-center"></th>
+                      <td>Lorem</td>
+                      <td>Ipsum</td>
+                      <td>Dolor</td>
+                    </tr>
+                  </template>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </template>
+      </div>
+      <div x-show="!show.table" class="italic text-base-content/50">Click title to show</div>
+    </div>
     <div class="mt-96"></div>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="./script.js"></script>

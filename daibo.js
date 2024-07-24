@@ -552,6 +552,29 @@ export default {
       "--panel-color": "var(--er)",
       "--panel-color-text": "var(--erc)",
     },
+    ".table :where(thead, tfoot)": {
+      "font-size": ".875rem",
+      "font-weight": "400",
+      color: "oklch(var(--bc))",
+    },
+    ".table.table-xs :where(thead, tfoot)": {
+      "font-size": ".75rem",
+    },
+    ".table tr.active, .table tr.active:nth-child(2n), .table-zebra tbody tr:nth-child(2n)": {
+      "background-color": "color-mix( in oklab, oklch(var(--b1) / var(--tw-bg-opacity, 1)) 98%, black )",
+    },
+    ".table-bordered": {
+      border: "1px solid oklch(var(--b2))",
+    },
+    ".table-pin-rows thead tr": {
+      "box-shadow": "0px 1px 0px 0px oklch(var(--b2))",
+    },
+    ".table-hover-rows tbody tr:hover": {
+      "background-color": "color-mix( in oklab, oklch(var(--b1) / var(--tw-bg-opacity, 1)) 97.5%, black )",
+    },
+    ".table-zebra.table-hover-rows tbody tr:hover": {
+      "background-color": "color-mix( in oklab, oklch(var(--b1) / var(--tw-bg-opacity, 1)) 96.5%, black )",
+    },
   },
   daiboDark: {
     ...themes["daibo"],
