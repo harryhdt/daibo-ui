@@ -385,7 +385,7 @@ export default {
     ".progress": {
       height: "1rem",
     },
-    ".progress::-moz-progress-bar": {
+    ".progress:not(.progress-zebra)::-moz-progress-bar, .progress:not(.progress-zebra)[value]::-webkit-progress-value": {
       "background-image": "linear-gradient(to bottom,oklch(var(--progress-color)) 0,color-mix( in oklab, oklch(var(--progress-color, var(--b2)) / var(--tw-bg-opacity, 1)) 85%, black ) 100%)",
       "box-shadow": "inset 0 -1px 0 rgba(0,0,0,.15)",
       "border-radius": "0",
@@ -411,9 +411,19 @@ export default {
     ".progress-error": {
       "--progress-color": "var(--er)",
     },
+    ".progress-zebra::-moz-progress-bar, .progress-zebra[value]::-webkit-progress-value": {
+      "background-image": "linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)",
+      "background-repeat": "repeat-x",
+      "box-shadow": "inset 0 -1px 0 rgba(0,0,0,.15)",
+      "border-radius": "0",
+      "background-size": "2.5rem 2.5rem",
+    },
     ".alert": {
       "--alert-bg": "var(--fallback-in,oklch(var(--b2)))",
       "--alert-border-color": "var(--fallback-in,oklch(var(--b3)))",
+      display: "flex",
+      "align-items": "flex-start",
+      "text-align": "left",
       border: "1px solid oklch(var(--alert-border-color, var(--b2)))",
       padding: "0.5rem 0.75rem",
       "text-shadow": "0 1px 0 rgba(255,255,255,.2)",
@@ -430,6 +440,9 @@ export default {
       "text-shadow": "0 1px 0 oklch(var(--b1))",
       "background-image": "linear-gradient(to bottom,oklch(var(--b1)) 0,oklch(var(--b2)) 100%)",
       "box-shadow": "inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.05)",
+    },
+    ".alert .icon": {
+      "margin-top": "0.2rem",
     },
     ".alert.alert-info": {
       "--alert-bg": "var(--in)",
@@ -568,6 +581,7 @@ export default {
     },
     ".table-pin-rows thead tr": {
       "box-shadow": "0px 1px 0px 0px oklch(var(--b2))",
+      "border-bottom-width": "0",
     },
     ".table-hover-rows tbody tr:hover": {
       "background-color": "color-mix( in oklab, oklch(var(--b1) / var(--tw-bg-opacity, 1)) 97.5%, black )",

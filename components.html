@@ -360,7 +360,7 @@
       <h3 class="inline-block mb-4 text-2xl font-medium cursor-pointer select-none hover:underline" @click="toggleShow('progress')">Progress</h3>
       <div x-cloak x-show="show.progress">
         <div
-          x-data="{ elements: [ 'progress-default', 'progress-primary', 'progress-secondary', 'progress-accent', 'progress-info', 'progress-success', 'progress-warning', 'progress-error' ] }"
+          x-data="{ elements: [ 'progress-default', 'progress-primary', 'progress-secondary', 'progress-accent', 'progress-info', 'progress-success', 'progress-warning', 'progress-error', 'progress-primary progress-zebra' ] }"
           class="flex flex-wrap items-center w-full max-w-xs gap-2"
         >
           <template x-for="element in elements" :key="element">
@@ -376,7 +376,7 @@
         <div x-data="{ elements: [ 'alert-default', 'alert-info', 'alert-success', 'alert-warning', 'alert-error' ] }" class="flex flex-col w-full max-w-xs gap-2">
           <template x-for="element in elements" :key="element">
             <div class="alert" :class="element">
-              <div class="[&>svg]:size-4" x-lucide="'CheckCircle'"></div>
+              <div class="[&>svg]:size-4 icon" x-lucide="'CheckCircle'"></div>
               <span x-text="ucFirst(element.split('-')[1]) + ' alert message here ...'"></span>
             </div>
           </template>
